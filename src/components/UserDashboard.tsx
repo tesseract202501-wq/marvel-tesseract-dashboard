@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Lock, Unlock, Sparkles, Zap, ArrowRight, Vote } from "lucide-react";
+import { Trophy, DoorOpen, Clock, FileText, Vote, User, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 interface Game {
@@ -13,199 +13,199 @@ interface Game {
   status: "unlocked" | "locked";
   points: number;
   description: string;
-  image: string;
+  icon: any;
 }
 
 interface Team {
   rank: number;
   name: string;
   points: number;
-  color: string;
 }
 
 const games: Game[] = [
   {
     id: 1,
-    title: "Infinity Stone Quest",
+    title: "TIMEDOOR",
     status: "unlocked",
     points: 500,
-    description: "Collect all six infinity stones across the cosmos",
-    image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
+    description: "Open Door",
+    icon: DoorOpen,
   },
   {
     id: 2,
-    title: "Quantum Realm Challenge",
+    title: "TIMELINE",
     status: "unlocked",
     points: 350,
-    description: "Navigate through the subatomic quantum dimension",
-    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&h=300&fit=crop",
+    description: "Track Events",
+    icon: TrendingUp,
   },
   {
     id: 3,
-    title: "Tesseract Portal",
+    title: "DOCUMENTS",
     status: "unlocked",
     points: 450,
-    description: "Master space travel through tesseract portals",
-    image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=300&fit=crop",
+    description: "File Access",
+    icon: FileText,
   },
 ];
 
 const teams: Team[] = [
-  { rank: 1, name: "Cosmic Avengers", points: 8450, color: "#8B5CF6" },
-  { rank: 2, name: "Infinity Warriors", points: 7890, color: "#EC4899" },
-  { rank: 3, name: "Quantum Guardians", points: 7320, color: "#3B82F6" },
-  { rank: 4, name: "Tesseract Titans", points: 6850, color: "#10B981" },
-  { rank: 5, name: "Multiverse Masters", points: 6420, color: "#F59E0B" },
+  { rank: 1, name: "Cosmic Avengers", points: 8450 },
+  { rank: 2, name: "Infinity Warriors", points: 7890 },
+  { rank: 3, name: "Quantum Guardians", points: 7320 },
 ];
 
 export default function UserDashboard() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-950 via-amber-900 to-stone-900 relative overflow-hidden">
-      {/* TVA-inspired retro pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,#d97706_0px,#d97706_2px,transparent_2px,transparent_10px)]"></div>
+    <div className="min-h-screen bg-black relative overflow-hidden font-mono">
+      {/* Grid Pattern Overlay */}
+      <div className="fixed inset-0 opacity-20 pointer-events-none">
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255, 147, 77, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 147, 77, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '30px 30px'
+          }}
+        />
       </div>
       
-      <div className="relative z-10 container mx-auto px-4 py-12 max-w-7xl">
-        {/* Header - TVA Style */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-4 mb-4 bg-amber-900/30 border-2 border-orange-600/50 px-8 py-4 backdrop-blur-sm">
-            <div className="w-12 h-12 bg-orange-600 flex items-center justify-center font-bold text-2xl text-white">
-              TVA
-            </div>
-            <h1 className="text-5xl font-bold text-orange-100 tracking-wide">
-              TESSERACT 2025
+      <div className="relative z-10 container mx-auto px-4 py-8 max-w-6xl">
+        {/* Main Border Frame */}
+        <div className="border-4 border-[#ff934d] shadow-[0_0_30px_rgba(255,147,77,0.5)] p-8">
+          
+          {/* Header */}
+          <div className="text-center mb-12 border-b-2 border-[#ff934d]/40 pb-6">
+            <h1 className="text-4xl font-bold text-[#ff934d] tracking-[0.3em] mb-2 uppercase drop-shadow-[0_0_15px_rgba(255,147,77,0.8)]">
+              TIME VARIANCE AUTHORITY
             </h1>
+            <div className="flex items-center justify-center gap-4 text-[#ff934d]/70 text-sm tracking-widest mt-4">
+              <span>04.52.3021</span>
+              <span>•</span>
+              <span>TERMINAL ACCESS</span>
+              <span>•</span>
+              <span>0231.47 // 387741</span>
+            </div>
           </div>
-          <p className="text-amber-200 text-lg font-light">Time Variance Authority • Sacred Timeline Division</p>
-        </div>
 
-        {/* Games Section - Minimal & Modern */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-orange-100 mb-8 uppercase tracking-wider border-l-4 border-orange-600 pl-4">
-            Available Games
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {games.map((game) => (
-              <Card
-                key={game.id}
-                className="group relative overflow-hidden border-2 border-orange-700/40 hover:border-orange-500 transition-all duration-300 bg-stone-900/60 backdrop-blur-sm hover:shadow-[0_0_30px_rgba(234,88,12,0.3)]"
-              >
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={game.image}
-                    alt={game.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 sepia-[0.3]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-orange-100 mb-3 tracking-wide">{game.title}</h3>
-                  <p className="text-amber-200/70 text-sm mb-6 leading-relaxed">{game.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-orange-500 font-bold text-lg">
-                      {game.points} pts
-                    </span>
-                    <Button
-                      size="sm"
-                      className="bg-orange-600 hover:bg-orange-700 text-white font-semibold border-0"
-                    >
-                      Play Now
-                    </Button>
+          {/* Action List Header */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-bold text-[#ff934d] tracking-[0.2em] uppercase">
+                ACTION LIST///
+              </h2>
+              <span className="text-[#ff934d]/60 text-sm tracking-wider">SELECT PROGRAM</span>
+            </div>
+          </div>
+
+          {/* Games Grid - Minimal Icons */}
+          <div className="grid grid-cols-3 gap-8 mb-12">
+            {games.map((game, index) => {
+              const IconComponent = game.icon;
+              return (
+                <div
+                  key={game.id}
+                  className="group relative flex flex-col items-center"
+                >
+                  {/* Indicator Dots */}
+                  <div className="absolute -left-6 top-8 flex flex-col gap-2">
+                    {[...Array(4)].map((_, i) => (
+                      <div 
+                        key={i}
+                        className={`w-2 h-2 rounded-full ${i === index ? 'bg-[#ff934d]' : 'bg-[#ff934d]/30'}`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Icon Box */}
+                  <div className="w-full aspect-square border-2 border-[#ff934d]/60 flex items-center justify-center mb-4 group-hover:border-[#ff934d] transition-all group-hover:shadow-[0_0_20px_rgba(255,147,77,0.4)]">
+                    <IconComponent className="w-16 h-16 text-[#ff934d] stroke-[1.5]" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-[#ff934d] font-bold tracking-wider text-sm mb-2 text-center">
+                    {game.title}
+                  </h3>
+
+                  {/* Points */}
+                  <div className="text-[#ff934d]/80 text-xs tracking-wider">
+                    {game.points.toString().padStart(4, '0')}
                   </div>
                 </div>
-              </Card>
-            ))}
+              );
+            })}
           </div>
-        </section>
 
-        {/* Vote Section - TVA Minimal */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-orange-100 mb-8 uppercase tracking-wider border-l-4 border-orange-600 pl-4">
-            Cast Your Vote
-          </h2>
-          <Card className="bg-gradient-to-br from-amber-900/30 to-stone-900/60 border-2 border-orange-700/40 hover:border-orange-600 p-10 backdrop-blur-sm transition-all duration-300">
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="mb-8">
-                <div className="w-20 h-20 bg-orange-600 mx-auto mb-6 flex items-center justify-center text-4xl font-bold text-white">
-                  V
-                </div>
-                <h3 className="text-3xl font-bold text-orange-100 mb-4 tracking-wide">
-                  Support Your Favorite Team
-                </h3>
-                <p className="text-amber-200/80 text-lg leading-relaxed">
-                  Review team projects and cast your vote. Remember: For All Time. Always.
-                </p>
+          {/* Center Character Icon */}
+          <div className="flex justify-center mb-12">
+            <div className="relative">
+              <div className="w-24 h-24 border-2 border-[#ff934d]/60 rounded-full flex items-center justify-center">
+                <User className="w-12 h-12 text-[#ff934d] stroke-[1.5]" />
               </div>
-              <Link href="/vote">
-                <Button
-                  size="lg"
-                  className="bg-orange-600 hover:bg-orange-700 text-white text-lg px-10 py-6 font-bold uppercase tracking-wider border-0 shadow-[0_0_25px_rgba(234,88,12,0.4)] hover:shadow-[0_0_35px_rgba(234,88,12,0.6)] transition-all duration-300"
-                >
-                  <Vote className="w-5 h-5 mr-2" />
-                  Go to Voting
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[#ff934d] font-bold text-sm tracking-wider whitespace-nowrap">
+                MISS MINUTES
+              </div>
             </div>
-          </Card>
-        </section>
+          </div>
 
-        {/* Leaderboard Section - Minimal TVA */}
-        <section>
-          <h2 className="text-2xl font-bold text-orange-100 mb-8 uppercase tracking-wider border-l-4 border-orange-600 pl-4">
-            Leaderboard Preview
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {teams.slice(0, 3).map((team) => (
-              <Card
-                key={team.rank}
-                className={`relative overflow-hidden border-2 transition-all duration-300 bg-stone-900/60 backdrop-blur-sm ${
-                  team.rank === 1
-                    ? "border-orange-500/60 md:order-2"
-                    : team.rank === 2
-                    ? "border-amber-600/60 md:order-1"
-                    : "border-stone-600/60 md:order-3"
-                }`}
-              >
-                <div className="p-6 text-center">
-                  <div className="relative inline-block mb-4">
-                    <div className={`w-16 h-16 flex items-center justify-center text-3xl font-bold ${
-                      team.rank === 1
-                        ? "bg-orange-600 text-white"
-                        : team.rank === 2
-                        ? "bg-amber-700 text-white"
-                        : "bg-stone-700 text-white"
-                    }`}>
+          {/* Vote Section */}
+          <div className="mb-12 pt-8">
+            <div className="border-2 border-[#ff934d]/60 p-8 hover:border-[#ff934d] transition-all hover:shadow-[0_0_25px_rgba(255,147,77,0.3)]">
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-[#ff934d] tracking-[0.15em] mb-6 uppercase">
+                  1. OPEN DOOR
+                </h3>
+                <Link href="/vote">
+                  <button className="bg-[#ff934d] text-black font-bold py-3 px-12 tracking-[0.2em] text-sm hover:shadow-[0_0_20px_rgba(255,147,77,0.6)] transition-all uppercase">
+                    2. DETECT
+                  </button>
+                </Link>
+                <div className="mt-6 text-[#ff934d]/60 text-sm tracking-wider">
+                  3. SUPPORT
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Leaderboard */}
+          <div>
+            <h2 className="text-xl font-bold text-[#ff934d] tracking-[0.2em] mb-6 uppercase">
+              LEADERBOARD///
+            </h2>
+            
+            <div className="space-y-4 mb-8">
+              {teams.map((team) => (
+                <div
+                  key={team.rank}
+                  className="border border-[#ff934d]/40 p-4 flex items-center justify-between hover:border-[#ff934d] transition-all hover:shadow-[0_0_15px_rgba(255,147,77,0.2)]"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-8 h-8 border border-[#ff934d] flex items-center justify-center text-[#ff934d] font-bold">
                       {team.rank}
                     </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-orange-100 mb-3 tracking-wide">{team.name}</h3>
-                  <div className="mb-2">
-                    <span className="text-3xl font-bold text-orange-500">
-                      {team.points.toLocaleString()}
+                    <span className="text-[#ff934d] tracking-wider text-sm uppercase">
+                      {team.name}
                     </span>
                   </div>
-                  <p className="text-amber-200/60 text-sm uppercase tracking-wide">Total Points</p>
+                  <span className="text-[#ff934d]/80 font-bold tracking-wider">
+                    {team.points.toString().padStart(5, '0')}
+                  </span>
                 </div>
-              </Card>
-            ))}
+              ))}
+            </div>
+
+            <div className="text-center">
+              <Link href="/leaderboard">
+                <button className="border border-[#ff934d] text-[#ff934d] font-bold py-2 px-10 tracking-[0.2em] text-xs hover:bg-[#ff934d] hover:text-black transition-all uppercase">
+                  VIEW FULL LEADERBOARD
+                </button>
+              </Link>
+            </div>
           </div>
 
-          <div className="text-center">
-            <Link href="/leaderboard">
-              <Button
-                size="lg"
-                className="bg-orange-600 hover:bg-orange-700 text-white font-bold text-lg px-10 py-6 uppercase tracking-wider border-0 shadow-[0_0_25px_rgba(234,88,12,0.4)] hover:shadow-[0_0_35px_rgba(234,88,12,0.6)] transition-all duration-300"
-              >
-                <Trophy className="w-5 h-5 mr-2" />
-                View Full Leaderboard
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </div>
-        </section>
+        </div>
       </div>
     </div>
   );
