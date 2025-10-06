@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ExternalLink, Vote, Sparkles, Trophy, X, Lock } from "lucide-react";
+import { ExternalLink, Vote, X, Lock, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
 
@@ -15,7 +15,6 @@ interface Team {
   projectUrl: string;
   description: string;
   votes: number;
-  color: string;
 }
 
 export default function VotePage() {
@@ -25,177 +24,168 @@ export default function VotePage() {
   const teams: Team[] = [
     {
       id: "1",
-      name: "Team Stark",
+      name: "TIMEDOOR",
       projectUrl: "https://ironman.marvel.com",
-      description: "Innovative AI-powered solutions with cutting-edge technology",
+      description: "TEMPORAL ACCESS CONTROL SYSTEM",
       votes: 1247,
-      color: "from-red-500/20 to-yellow-500/20",
     },
     {
       id: "2",
-      name: "Team Cap",
+      name: "TIMELINE",
       projectUrl: "https://captainamerica.marvel.com",
-      description: "Strategic team collaboration platform for modern heroes",
+      description: "BRANCHING DETECTION FRAMEWORK",
       votes: 1189,
-      color: "from-blue-500/20 to-red-500/20",
     },
     {
       id: "3",
-      name: "Team Thor",
+      name: "DOCUMENTS",
       projectUrl: "https://thor.marvel.com",
-      description: "Thunder-powered cloud computing infrastructure",
+      description: "ARCHIVE MANAGEMENT PROTOCOL",
       votes: 1034,
-      color: "from-blue-500/20 to-purple-500/20",
-    },
-    {
-      id: "4",
-      name: "Team Widow",
-      projectUrl: "https://blackwidow.marvel.com",
-      description: "Stealth security and encryption systems",
-      votes: 967,
-      color: "from-gray-500/20 to-red-500/20",
-    },
-    {
-      id: "5",
-      name: "Team Hulk",
-      projectUrl: "https://hulk.marvel.com",
-      description: "High-performance data processing engine",
-      votes: 892,
-      color: "from-green-500/20 to-purple-500/20",
-    },
-    {
-      id: "6",
-      name: "Team Strange",
-      projectUrl: "https://doctorstrange.marvel.com",
-      description: "Mystical quantum computing solutions",
-      votes: 845,
-      color: "from-purple-500/20 to-pink-500/20",
     },
   ];
 
   const handleVote = (teamId: string) => {
     if (votedTeamId) {
-      toast.error("You've already cast your vote! Each user gets only 1 vote.");
+      toast.error("VOTE ALREADY CAST • ONE VOTE PER USER");
       return;
     }
     
     setVotedTeamId(teamId);
-    toast.success("✨ Vote recorded by S.H.I.E.L.D.! Your support matters!");
+    toast.success("✓ VOTE RECORDED • TVA DATABASE UPDATED");
     setSelectedTeam(null);
   };
 
   const hasVoted = votedTeamId !== null;
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-purple-950 via-slate-900 to-slate-950">
-      {/* Cosmic Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM4YjVjZjYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNGgydjJoLTJ2LTJ6bS0yIDJ2Mmgydi0yaC0yem0wLTJoMnYyaC0ydi0yem0tMiAydjJoMnYtMmgtMnptMC0yaDJ2MmgtMnYtMnptLTIgMnYyaDJ2LTJoLTJ6bTAtMmgydjJoLTJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30" />
+    <div className="min-h-screen relative bg-black overflow-hidden">
+      {/* Orange Grid Pattern */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #ff934d 1px, transparent 1px),
+            linear-gradient(to bottom, #ff934d 1px, transparent 1px)
+          `,
+          backgroundSize: '30px 30px'
+        }}
+      />
 
       <div className="relative z-10 container mx-auto px-4 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 border-2 border-[#ff934d]/60 p-8 bg-black/50">
           <Link href="/">
-            <Button variant="outline" className="mb-4 border-purple-500/50 hover:bg-purple-500/10">
-              ← Back to Dashboard
+            <Button 
+              variant="outline" 
+              className="mb-6 border-[#ff934d]/60 text-[#ff934d] hover:bg-[#ff934d]/10 hover:text-[#ff934d] font-mono uppercase tracking-wider"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              RETURN
             </Button>
           </Link>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-2">
+          
+          <div className="mb-4 inline-block border border-[#ff934d]/60 px-6 py-2 bg-black/80">
+            <span className="text-[#ff934d] font-mono text-sm tracking-[0.3em]">TVA</span>
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold text-[#ff934d] mb-4 font-mono tracking-wider uppercase">
             CAST YOUR VOTE
           </h1>
-          <p className="text-xl text-purple-200/80">
-            <Sparkles className="inline w-5 h-5 mr-2" />
-            Choose Your Champion — Support Innovation
+          <p className="text-xl text-[#ff934d]/70 font-mono tracking-wider uppercase mb-6">
+            SELECT PROJECT • SUBMIT APPROVAL
           </p>
+          
           {hasVoted && (
-            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500/20 border border-green-500/50">
-              <Badge className="bg-green-500/30 text-green-200 border-green-400/50">
-                ✓ Vote Cast
+            <div className="mt-4 inline-flex items-center gap-2 px-6 py-3 border-2 border-[#ff934d] bg-[#ff934d]/10">
+              <Badge className="bg-[#ff934d]/30 text-[#ff934d] border-[#ff934d]/50 font-mono uppercase">
+                ✓ VOTED
               </Badge>
-              <span className="text-green-200 text-sm">
-                You voted for {teams.find(t => t.id === votedTeamId)?.name}
+              <span className="text-[#ff934d] text-sm font-mono uppercase tracking-wider">
+                {teams.find(t => t.id === votedTeamId)?.name}
               </span>
             </div>
           )}
+          
           {!hasVoted && (
-            <p className="mt-4 text-purple-300/70 text-sm">
-              ⚠️ You can only vote once — choose wisely!
+            <p className="mt-4 text-[#ff934d]/50 text-sm font-mono uppercase tracking-wider">
+              ⚠ ONE VOTE ONLY • CHOOSE WISELY
             </p>
           )}
-          <div className="mt-4">
+          
+          <div className="mt-6">
             <Link href="/leaderboard">
-              <Button className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold">
-                <Trophy className="w-4 h-4 mr-2" />
-                View Leaderboard
+              <Button className="bg-[#ff934d] hover:bg-[#ff934d]/80 text-black font-bold font-mono uppercase tracking-wider shadow-[0_0_20px_rgba(255,147,77,0.5)]">
+                VIEW LEADERBOARD
               </Button>
             </Link>
           </div>
         </div>
 
         {/* Teams Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {teams.map((team) => {
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {teams.map((team, index) => {
             const isVotedTeam = votedTeamId === team.id;
             const isLocked = hasVoted && !isVotedTeam;
 
             return (
               <Card
                 key={team.id}
-                className={`relative overflow-hidden border-2 backdrop-blur-sm transition-all duration-300 ${
+                className={`relative border-2 bg-black transition-all duration-300 ${
                   isLocked
-                    ? "border-gray-500/30 bg-gradient-to-br from-gray-500/10 to-gray-700/10 opacity-60 cursor-not-allowed"
+                    ? "border-[#ff934d]/20 opacity-40 cursor-not-allowed"
                     : isVotedTeam
-                    ? "border-green-500/50 bg-gradient-to-br from-green-500/20 to-emerald-500/20 shadow-[0_0_30px_rgba(34,197,94,0.4)]"
-                    : `border-purple-500/30 bg-gradient-to-br ${team.color} hover:border-purple-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] cursor-pointer`
-                } group`}
+                    ? "border-[#ff934d] shadow-[0_0_30px_rgba(255,147,77,0.6)]"
+                    : "border-[#ff934d]/60 hover:border-[#ff934d] hover:shadow-[0_0_20px_rgba(255,147,77,0.4)] cursor-pointer"
+                }`}
                 onClick={() => !isLocked && setSelectedTeam(team)}
               >
+                {/* Indicator Dot */}
+                <div className={`absolute left-4 top-4 w-2 h-2 ${
+                  isVotedTeam ? "bg-[#ff934d]" : "bg-[#ff934d]/40"
+                }`} />
+                
                 {isLocked && (
                   <div className="absolute top-4 right-4 z-10">
-                    <Lock className="w-6 h-6 text-gray-400" />
+                    <Lock className="w-5 h-5 text-[#ff934d]/40" />
                   </div>
                 )}
                 
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                
                 <CardHeader>
-                  <CardTitle className={`text-2xl transition-colors flex items-center justify-between ${
-                    isLocked ? "text-gray-400" : isVotedTeam ? "text-green-200" : "text-purple-200 group-hover:text-purple-100"
+                  <div className="text-center mb-4 text-5xl text-[#ff934d]/60 font-mono">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <CardTitle className={`text-2xl font-mono tracking-wider uppercase text-center transition-colors ${
+                    isLocked ? "text-[#ff934d]/40" : "text-[#ff934d]"
                   }`}>
                     {team.name}
-                    {!isLocked && <ExternalLink className="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity" />}
                   </CardTitle>
                 </CardHeader>
                 
                 <CardContent>
-                  <p className={`mb-4 text-sm ${isLocked ? "text-gray-400" : "text-gray-300"}`}>
+                  <p className={`mb-6 text-xs font-mono uppercase tracking-wider text-center ${
+                    isLocked ? "text-[#ff934d]/30" : "text-[#ff934d]/60"
+                  }`}>
                     {team.description}
                   </p>
                   
-                  <div className="flex items-center justify-between">
-                    <Badge className={`${
+                  <div className="flex items-center justify-center mb-4">
+                    <Badge className={`font-mono uppercase tracking-wider ${
                       isVotedTeam 
-                        ? "bg-green-500/30 text-green-200 border-green-400/50"
-                        : "bg-purple-500/30 text-purple-200 border-purple-400/50"
+                        ? "bg-[#ff934d]/30 text-[#ff934d] border-[#ff934d]/50"
+                        : "bg-[#ff934d]/10 text-[#ff934d]/70 border-[#ff934d]/30"
                     }`}>
-                      <Trophy className="w-3 h-3 mr-1" />
-                      {team.votes} votes
+                      {team.votes} VOTES
                     </Badge>
-                    
-                    {isVotedTeam && (
-                      <Badge className="bg-green-500/30 text-green-200 border-green-400/50">
-                        ✓ Your Vote
-                      </Badge>
-                    )}
                   </div>
                   
                   <Button
-                    className={`w-full mt-4 font-bold transition-all ${
+                    className={`w-full font-bold font-mono uppercase tracking-wider transition-all ${
                       isLocked
-                        ? "bg-gray-600/50 text-gray-300 cursor-not-allowed"
+                        ? "bg-[#ff934d]/10 text-[#ff934d]/40 border border-[#ff934d]/20 cursor-not-allowed"
                         : isVotedTeam
-                        ? "bg-green-600/50 text-green-100"
-                        : "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+                        ? "bg-[#ff934d]/20 text-[#ff934d] border-2 border-[#ff934d]"
+                        : "bg-[#ff934d] text-black hover:bg-[#ff934d]/80 shadow-[0_0_15px_rgba(255,147,77,0.3)]"
                     }`}
                     onClick={(e) => {
                       e.stopPropagation();
@@ -206,12 +196,12 @@ export default function VotePage() {
                     {isLocked ? (
                       <>
                         <Lock className="w-4 h-4 mr-2" />
-                        Locked
+                        LOCKED
                       </>
                     ) : isVotedTeam ? (
-                      "Your Vote"
+                      "✓ YOUR VOTE"
                     ) : (
-                      "View Project & Vote"
+                      "VIEW & VOTE"
                     )}
                   </Button>
                 </CardContent>
@@ -223,64 +213,61 @@ export default function VotePage() {
 
       {/* Project Preview Dialog */}
       <Dialog open={!!selectedTeam} onOpenChange={() => setSelectedTeam(null)}>
-        <DialogContent className="max-w-6xl h-[90vh] p-0 border-2 border-purple-500/50 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 overflow-hidden">
+        <DialogContent className="max-w-6xl h-[90vh] p-0 border-2 border-[#ff934d]/60 bg-black overflow-hidden">
           {selectedTeam && (
             <>
-              <DialogHeader className="p-6 bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-b border-purple-500/30">
-                <DialogTitle className="text-3xl bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent flex items-center justify-between">
+              <DialogHeader className="p-6 bg-black border-b border-[#ff934d]/30">
+                <DialogTitle className="text-3xl text-[#ff934d] font-mono uppercase tracking-wider flex items-center justify-between">
                   <span>{selectedTeam.name}</span>
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={() => setSelectedTeam(null)}
-                    className="text-purple-300 hover:text-purple-100 hover:bg-purple-500/20"
+                    className="text-[#ff934d] hover:text-[#ff934d]/70 hover:bg-[#ff934d]/10"
                   >
                     <X className="w-5 h-5" />
                   </Button>
                 </DialogTitle>
-                <p className="text-purple-200/70 mt-2">{selectedTeam.description}</p>
+                <p className="text-[#ff934d]/60 mt-2 font-mono uppercase tracking-wider text-sm">
+                  {selectedTeam.description}
+                </p>
               </DialogHeader>
 
               <div className="flex-1 p-4 overflow-hidden">
-                <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-purple-500/30 bg-black/50 backdrop-blur-sm">
-                  {/* iframe for project preview */}
+                <div className="relative w-full h-full border-2 border-[#ff934d]/30 bg-black overflow-hidden">
                   <iframe
                     src={selectedTeam.projectUrl}
                     className="w-full h-full"
                     title={`${selectedTeam.name} Project`}
                     sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                   />
-                  
-                  {/* Overlay for error handling */}
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-purple-950/20 to-transparent" />
                 </div>
               </div>
 
-              <div className="p-6 bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-t border-purple-500/30 flex items-center justify-between">
+              <div className="p-6 bg-black border-t border-[#ff934d]/30 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <Badge className="bg-purple-500/30 text-purple-200 border-purple-400/50 text-lg py-2 px-4">
-                    <Trophy className="w-4 h-4 mr-2" />
-                    {selectedTeam.votes} votes
+                  <Badge className="bg-[#ff934d]/20 text-[#ff934d] border-[#ff934d]/40 text-lg py-2 px-4 font-mono uppercase">
+                    {selectedTeam.votes} VOTES
                   </Badge>
                   
                   <a
                     href={selectedTeam.projectUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-purple-300 hover:text-purple-100 underline text-sm flex items-center gap-1"
+                    className="text-[#ff934d]/70 hover:text-[#ff934d] underline text-sm flex items-center gap-1 font-mono uppercase tracking-wider"
                   >
-                    Open in New Tab <ExternalLink className="w-3 h-3" />
+                    EXTERNAL <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
 
                 <Button
                   size="lg"
-                  className={`font-bold shadow-lg ${
+                  className={`font-bold shadow-lg font-mono uppercase tracking-wider ${
                     votedTeamId === selectedTeam.id
-                      ? "bg-green-600/50 cursor-not-allowed"
+                      ? "bg-[#ff934d]/20 text-[#ff934d] border-2 border-[#ff934d] cursor-not-allowed"
                       : hasVoted
-                      ? "bg-gray-600/50 cursor-not-allowed"
-                      : "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-[0_0_30px_rgba(168,85,247,0.7)]"
+                      ? "bg-[#ff934d]/10 text-[#ff934d]/40 border border-[#ff934d]/20 cursor-not-allowed"
+                      : "bg-[#ff934d] text-black hover:bg-[#ff934d]/80 shadow-[0_0_30px_rgba(255,147,77,0.5)]"
                   }`}
                   onClick={() => handleVote(selectedTeam.id)}
                   disabled={hasVoted}
@@ -288,17 +275,17 @@ export default function VotePage() {
                   {votedTeamId === selectedTeam.id ? (
                     <>
                       <Vote className="w-5 h-5 mr-2" />
-                      Your Vote
+                      YOUR VOTE
                     </>
                   ) : hasVoted ? (
                     <>
                       <Lock className="w-5 h-5 mr-2" />
-                      Already Voted
+                      LOCKED
                     </>
                   ) : (
                     <>
                       <Vote className="w-5 h-5 mr-2" />
-                      Cast Vote
+                      CAST VOTE
                     </>
                   )}
                 </Button>
